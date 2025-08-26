@@ -1117,7 +1117,7 @@ static void Host_Savegame_f (void)
 	// those).
 	fprintf (f, "/*\n");
 	fprintf (f, "// QuakeSpasm extended savegame\n");
-	for (i = MAX_LIGHTSTYLES; i < MAX_LIGHTSTYLES; i++)
+	for (i = 0; i < MAX_LIGHTSTYLES; i++)
 	{
 		if (sv.lightstyles[i])
 			fprintf (f, "sv.lightstyles %i \"%s\"\n", i, sv.lightstyles[i]);
@@ -1864,7 +1864,7 @@ static void Host_Spawn_f (void)
 
 	MSG_WriteByte (&host_client->message, svc_signonnum);
 	MSG_WriteByte (&host_client->message, 3);
-	host_client->sendsignon = true;
+	host_client->sendsignon = PRESPAWN_FLUSH;
 }
 
 /*
